@@ -1,0 +1,20 @@
+.product-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Расстояние между карточками */
+}
+
+.product-card {
+  width: 300px; /* Фиксированная ширина карточки */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+.product-card .card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
