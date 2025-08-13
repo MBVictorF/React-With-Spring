@@ -1,6 +1,8 @@
+/*
 package com.example.demo.okta.developer.jugtours;
 
-import com.example.demo.okta.developer.jugtours.model.Product;
+*/
+/*import com.example.demo.okta.developer.jugtours.model.Product;
 import com.example.demo.okta.developer.jugtours.model.ProductRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -23,9 +25,13 @@ class Initializer implements CommandLineRunner {
         displayAllProducts();
     }
 
-    /**
+    *//*
+*/
+/**
      * Диагностика работы репозитория
-     */
+     *//*
+*/
+/*
     private void debugJPARepository() {
         System.out.println("\n=== ДИАГНОСТИКА JPA REPOSITORY ===");
 
@@ -57,9 +63,13 @@ class Initializer implements CommandLineRunner {
         }
     }
 
-    /**
+    *//*
+*/
+/**
      * Вывод всех продуктов в финальном списке
-     */
+     *//*
+*/
+/*
     private void displayAllProducts() {
         System.out.println("\n=== ФИНАЛЬНЫЙ СПИСОК ПРОДУКТОВ (JPA) ===");
 
@@ -86,4 +96,42 @@ class Initializer implements CommandLineRunner {
             );
         }
     }
+}*//*
+
+
+import com.example.demo.okta.developer.jugtours.model.Product;
+import com.example.demo.okta.developer.jugtours.model.ProductRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
+import org.springframework.stereotype.Component;
+
+import java.util.List;
+
+@Component
+@RequiredArgsConstructor
+class ProductInitializer {
+
+    private final ProductRepository repository;
+
+    @EventListener(ApplicationReadyEvent.class)
+    public void showProductsOnStartup() {
+        System.out.println("📦 Данные в таблице user_product:");
+
+        List<Product> products = repository.findAll();
+
+        if (products.isEmpty()) {
+            System.out.println("⚠ Таблица пуста!");
+        } else {
+            products.forEach(product ->
+                    System.out.printf("➡ ID: %d, Name: %s, Price: %s, Image: %s%n",
+                            product.getId(),
+                            product.getName(),
+                            product.getPrice(),
+                            product.getImageUrl()
+                    )
+            );
+        }
+    }
 }
+*/

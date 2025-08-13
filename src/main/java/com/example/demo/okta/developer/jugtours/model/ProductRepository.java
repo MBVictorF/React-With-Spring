@@ -9,6 +9,15 @@ import java.util.List;
 
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
+    @Query(value = "SELECT COUNT(*) FROM public.user_product", nativeQuery = true)
+    Integer getActualRowCount();
+
+    @Query(value = "SELECT id, name, description, price, image_url FROM public.user_product", nativeQuery = true)
+    List<Object[]> getAllRawData();
+
+    @Query(value = "SELECT * FROM public.user_product WHERE 1=1", nativeQuery = true)
+    List<Object[]> getAllDataWithWhere();
+
     // Поиск по названию (без учета регистра)
     List<Product> findByNameContainingIgnoreCase(String name);
 
